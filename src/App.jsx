@@ -11,11 +11,9 @@ const App = () => {
       <div className="navbar">
         <img src={logo} className="logo" alt="" />
         <Link to="/">Home</Link>
-        <Link to="/comic">Comic</Link>
         <Link to="/characters">Characters</Link>
         <Link to="/about">About</Link>
       </div>
-
       {path === "/" ? (
         <>
           <h3 className="paragraph">

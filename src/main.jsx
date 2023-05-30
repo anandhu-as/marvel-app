@@ -10,7 +10,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <App />
       <Routes>
         <Route path="/characters" Component={Character} />
-      
         <Route path="*"/>
       </Routes>
     </BrowserRouter>
