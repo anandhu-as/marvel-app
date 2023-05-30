@@ -31,19 +31,18 @@ const Character = () => {
 
   return (
     <>
-     
-        {selectedComic ? (
-           <div className="description">
+      {selectedComic ? (
+        <div className="description">
           <Info
             name={selectedComic.name}
             image={selectedComic.image}
             description={selectedComic.description}
           />
-             </div>
-        ) : (
-          false
-        )}
-   
+        </div>
+      ) : (
+        false
+      )}
+
       <div className="comic-posts">
         {character.map((comic, id) => (
           <div key={comic.id} className="comic-post">

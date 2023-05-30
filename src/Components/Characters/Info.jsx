@@ -1,6 +1,6 @@
 import React from "react";
 
-const Info = ({ name, image, description }) => {
+const Info = ({ name, image, description,comics }) => {
   return (
     <>
       <h3>{name}</h3>
