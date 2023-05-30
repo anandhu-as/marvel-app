@@ -1,31 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Characters/Character.css";
-import { useEffect, useState } from "react";
+import Info from "./Info";
+
 const Character = () => {
-  const [comics, setComics] = useState([]);
+  const [character, setCharacter] = useState([]);
+  const [selectedComic, setSelectedComic] = useState(null);
   const ts = new Date().getTime();
   const apiKey = "068706157405403f21bbbe69a756f4fd";
   const privateKey = "1f20b361a1970c692ac90aeacc2672a4b838f2a5";
   const hash = CryptoJS.MD5(ts + privateKey + apiKey).toString();
   const URL = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apiKey}&hash=${hash}&limit=100`;
+
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        const comicData = data.data.results.map((item) => ({
+        const characterData = data.data.results.map((item) => ({
+          id: item.id,
           name: item.name,
+          description: item.description,
           image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
         }));
-        setComics(comicData);
+        setCharacter(characterData);
       });
   }, []);
+
+  const getInfo = (item) => {
+    setSelectedComic(item);
+  };
+
   return (
     <>
+     
+        {selectedComic ? (
+           <div className="description">
+          <Info
+            name={selectedComic.name}
+            image={selectedComic.image}
+            description={selectedComic.description}
+          />
+             </div>
+        ) : (
+          false
+        )}
+   
       <div className="comic-posts">
-        {comics.map((comic, id) => (
+        {character.map((comic, id) => (
           <div key={comic.id} className="comic-post">
             <img
-              src={comic.image ? comic.image : { imageUrl }}
+              onClick={() => getInfo(comic)}
+              src={comic.image ? comic.image : ""}
               key={id}
               alt=""
               className="comic-image"
