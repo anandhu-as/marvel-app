@@ -1,0 +1,33 @@
+.comic-posts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comic-post {
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.comic-image {
+  margin-left: 100px;
+  width: 100%;
+  height: auto;
+  transition: 2s ease;
+}
+.comic-image:hover {
+  transform: scale(1.1);
+}
+
+h4 {
+  margin-left: 100px;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  color: rgb(65, 13, 7);
+  font-size: 26px;
+}
