@@ -21,22 +21,7 @@
   height: auto;
   transition: 2s ease;
 }
-.comic-image:hover {
-  transform: scale(1.1);
-}
 
-h4 {
-  margin-left: 100px;
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: bold;
-}
-h1 {
-  text-align: center;
-  color: rgb(65, 13, 7);
-  font-size: 96px;
-  margin-top: 300px;
-}
 .description {
   background-color: #f2f1f1;
   padding: 90px;
@@ -48,7 +33,7 @@ h1 {
   color: #111;
 }
 
-.description p {
+.description h6 {
   font-size: 16px;
   color: #666;
   transform: ease 2s;

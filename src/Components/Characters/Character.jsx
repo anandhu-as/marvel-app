@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext, createContext } from "react";
 import "../Characters/Character.css";
 import Info from "./Info";
-
-const Character = () => {
+const MyContext = createContext();
+const Character = ({ section }) => {
   const [character, setCharacter] = useState([]);
   const [selectedComic, setSelectedComic] = useState(null);
   const ts = new Date().getTime();
   const apiKey = "068706157405403f21bbbe69a756f4fd";
   const privateKey = "1f20b361a1970c692ac90aeacc2672a4b838f2a5";
   const hash = CryptoJS.MD5(ts + privateKey + apiKey).toString();
-  const URL = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apiKey}&hash=${hash}&limit=100`;
+  const URL = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apiKey}&hash=${hash}&limit=80`;
+
+  const contextValue = useContext(MyContext);
 
   useEffect(() => {
     fetch(URL)
@@ -30,7 +32,7 @@ const Character = () => {
   };
 
   return (
-    <>
+    <MyContext.Provider value={contextValue}>
       {selectedComic ? (
         <div className="description">
           <Info
@@ -57,7 +59,7 @@ const Character = () => {
           </div>
         ))}
       </div>
-    </>
+    </MyContext.Provider>
   );
 };
 

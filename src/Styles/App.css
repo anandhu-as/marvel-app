@@ -38,9 +38,9 @@
 .navbar a:hover {
   text-decoration: underline #666;
 }
-p {
+.paragraph {
   font-size: 16px;
-  color: rgb(255, 34, 0);
+  color: #666;
   justify-content: center;
   text-align: center;
   transform: 2s ease;
@@ -48,14 +48,16 @@ p {
 h3 {
   text-align: center;
   padding: 160px;
-  animation: slide 3s;
   line-height: 2;
 }
 @keyframes slide {
   from {
-    line-height: 300px;
+    line-height: 600px;
   }
   to {
     line-height: 38px;
   }
+}
+.title {
+  color: #333;
 }
