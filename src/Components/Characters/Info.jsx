@@ -1,5 +1,5 @@
 import React from "react";
-import "../Characters/Info.css"
+import "../Characters/Info.css";
 const Info = ({ name, image, description, comics }) => {
   return (
     <>
