@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useContext, createContext } from "react";
 import "../Characters/Character.css";
+
+import { Link } from "react-router-dom";
 import Info from "./Info";
 const MyContext = createContext();
 const Character = ({}) => {
   const [character, setCharacter] = useState([]);
-  const [selectedComic, setSelectedComic] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedComic, setSelectedComic] = useState(true);
   const ts = new Date().getTime();
   const apiKey = "068706157405403f21bbbe69a756f4fd";
   const privateKey = "1f20b361a1970c692ac90aeacc2672a4b838f2a5";
@@ -20,9 +23,10 @@ const Character = ({}) => {
           name: item.name,
           description: item.description,
           image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+          details: item.urls[0].url,
         }));
         setCharacter(characterData);
-        console.log(characterData);
+        setLoading(false);
       });
   }, []);
 
@@ -37,29 +41,44 @@ const Character = ({}) => {
               name={selectedComic.name}
               image={selectedComic.image}
               description={selectedComic.description}
+              details={selectedComic.details}
             />
           </div>
         ) : (
           false
         )}
-
-        <div className="comic-posts">
-          {character.map((comic, id) => (
-            <div
-              key={comic.id}
-              className="comic-post"
-              onClick={() => getInfo(comic)}
-            >
-              <img
-                src={comic.image ? comic.image : ""}
-                key={id}
-                alt=""
-                className="comic-image"
-              />
-              <h4>{comic.name}</h4>
+        {loading ? (
+          <>
+            <h1 className="loading">Loading....</h1>
+          </>
+        ) : (
+          <>
+            <div className="comic-posts">
+              {character.map((comic, id) => (
+                <div
+                  key={comic.id}
+                  className="comic-post"
+                  onClick={() => getInfo(comic)}
+                >
+                  <img
+                    src={comic.image ? comic.image : ""}
+                    key={id}
+                    alt=""
+                    className="comic-image"
+                  />
+                  <h4>{comic.name}</h4>
+                  <Link
+                    to={comic.details}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </MyContext.Provider>
     </>
   );

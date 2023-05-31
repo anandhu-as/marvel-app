@@ -33,3 +33,14 @@ h4 {
   font-size: 16px;
   font-weight: bold;
 }
+.loading {
+  font-size: 50px;
+  color: #666;
+  text-align: center;
+  margin-right: 10px;
+  padding: 300px;
+}
+a{
+  text-decoration: none;
+  color: #666;
+}

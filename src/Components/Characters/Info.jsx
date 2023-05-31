@@ -4,7 +4,7 @@ const Info = ({ name, image, description, comics }) => {
   return (
     <>
       <div className="info-container">
-        <p className="info-title">{name}</p>
+        <p className="info-title">{name ? name : "Marvel Characters"}</p>
         <img src={image} alt="" className="info-image" />
         <p className="info-description">
           {description

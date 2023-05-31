@@ -47,7 +47,7 @@ const App = () => {
             the X-Men and Spider-Man multi-film franchises.
           </h3>
         </>
-      ) : null}
+      ) : ""}
     </>
   );
 };
